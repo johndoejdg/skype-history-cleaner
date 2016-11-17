@@ -1,7 +1,12 @@
 **Requirements:** 
-selenium-server 
-selenium-webdriver
-q
+
+Applications:
+- chrome browser
+- selenium-server 
+
+Npm packages:
+- selenium-webdriver
+- q
 
 **Description:**
 That tool automatically delete history for you and for your contacts. 
