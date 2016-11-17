@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "cleaner.js",
+  "private": true,
   "dependencies": {
+    "selenium-webdriver": "*",
     "q": "^1.4.1"
   },
   "devDependencies": {},
