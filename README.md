@@ -1,5 +1,6 @@
 **Requirements:** 
 selenium-webdriver (npm install -g selenium-webdriver)
+q
 
 **Description:**
 That tool automatically delete history for you and for your contacts. 
@@ -9,9 +10,11 @@ Skype do not provide feature that fully clear history by one click. "Delete hist
 
 **How to run:**
 
-1. In cleaner.js provide your credentials:
+1. npm install -g selenium-webdriver
+2. npm install 
+3. In cleaner.js provide your credentials:
 ```
 var username = 'YOUR_LOGIN_HERE';
 var password = 'YOUR_PASSWORD_HERE';
 ```
-2. node selenium.js
+4. node selenium.js
