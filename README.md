@@ -1,5 +1,5 @@
 **Requirements:** 
-selenium-webdriver (npm install -g selenium-webdriver)
+selenium-webdriver
 q
 
 **Description:**
