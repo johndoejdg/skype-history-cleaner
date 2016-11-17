@@ -146,10 +146,10 @@ SkypeManager.prototype.removeMessage = function (index) {
 
         setTimeout(function () {
             driver.executeScript(function () {
-                return document.querySelectorAll('.swxContextMenu li:nth-child(5)').length;
+                return document.evaluate('/html/body/ul/li/span[contains(text(),"Remove")]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue !== null;
             }).then(function (isCanBeRemoved) {
                 if (isCanBeRemoved) {
-                    var removeButton = driver.findElement(By.css('.swxContextMenu li:nth-child(5)'));
+                    var removeButton = driver.findElement(By.xpath('/html/body/ul/li/span[contains(text(),"Remove")]'));
                     driver.actions().mouseMove(removeButton).click(removeButton).perform().then(function () {
                         deferred.fulfill();
                     });
@@ -202,7 +202,7 @@ SkypeManager.prototype.removeAllMessages = function () {
         return document.querySelectorAll('.messageHistory .message.me').length;
     }).then(function (messagesCount) {
         if (messagesCount !== 0) {
-            var index = 1;
+            var index = 0;
             SkypeManager.prototype.recursiveRemoveMessages(index, messagesCount).then(function () {
                 deferred.fulfill();
 
