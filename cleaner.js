@@ -26,9 +26,24 @@ SkypeManager.prototype.login = function () {
         innerDeferred.promise.then(function () {
             driver.findElement(By.css('input[name="passwd"]')).sendKeys(password);
             driver.findElement(By.css('input[type="submit"]')).submit().then(function () {
-                setTimeout(function () {
-                    deferred.fulfill();
-                }, 12000);
+                var loaded = false;
+
+                var checkLoaded = function () {
+                    driver.executeScript(function () {
+                        return document.querySelectorAll('.shellSplashScreen').length === 0;
+                    }, 0).then(function (result) {
+                        loaded = result;
+                        if (!loaded) {
+                            setTimeout(function () {
+                                checkLoaded();
+                            }, 1000);
+                        } else {
+                            deferred.fulfill(result);
+                        }
+                    });
+                };
+
+                checkLoaded();
             });
         });
     });
