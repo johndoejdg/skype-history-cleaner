@@ -10,11 +10,11 @@ Skype do not provide feature that fully clear history by one click. "Delete hist
 
 **How to run:**
 
-1. npm install -g selenium-webdriver
-2. npm install 
-3. In cleaner.js provide your credentials:
+* npm install -g selenium-webdriver
+* npm install 
+* In cleaner.js provide your credentials:
 ```
 var username = 'YOUR_LOGIN_HERE';
 var password = 'YOUR_PASSWORD_HERE';
 ```
-4. node selenium.js
+* node selenium.js
