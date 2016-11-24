@@ -6,7 +6,7 @@ var webdriver = require('selenium-webdriver'),
     fs = require('fs');
 
 var driver = new webdriver.Builder()
-    .forBrowser('phantomjs')
+    .forBrowser('chrome')
     .build();
 
 driver.manage().window().maximize();
@@ -76,7 +76,7 @@ SkypeManager.prototype.selectPerson = function (i) {
 
     setTimeout(function () {
         deferred.fulfill();
-    }, 5000);
+    }, 3000);
 
     return deferred.promise;
 };
@@ -95,8 +95,15 @@ SkypeManager.prototype.showAllMessages = function () {
         console.log('scrollHeight: '+scrollHeight);
 
         driver.executeScript(function () {
-            return document.querySelector('swx-chat-log .conversation').scrollTop = 0;
+            document.querySelector('swx-chat-log .conversation').scrollTop = 0;
+            return 0;
         }).then(function () {
+            for (var i = 0; i < 100; i++) {
+                driver.executeScript(function () {
+                    document.querySelector('swx-chat-log .conversation').scrollTop = 0;
+                    return 0;
+                });
+            }
             setTimeout(function () {
                 driver.executeScript(function () {
                     var scrollHeight = document.querySelector('swx-chat-log .conversation').scrollHeight;
@@ -105,8 +112,6 @@ SkypeManager.prototype.showAllMessages = function () {
                 }).then(function (result) {
                     scrollHeightNew = result;
                     console.log('scrollHeightNew: '+scrollHeightNew);
-                    // console.log('scrollHeightNew ' + scrollHeightNew);
-                    // console.log('scrollHeight ' + scrollHeight);
                     if (scrollHeightNew !== scrollHeight || scrollHeight === 0) {
                         SkypeManager.prototype.showAllMessages().then(function () {
                             deferred.fulfill();
@@ -117,7 +122,7 @@ SkypeManager.prototype.showAllMessages = function () {
                         console.log('On the top 2');
                     }
                 });
-            }, 6000);
+            }, 3000);
         });
     });
 
