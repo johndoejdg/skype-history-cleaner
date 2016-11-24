@@ -2,11 +2,14 @@ var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
     Button = webdriver.Button,
     promise = webdriver.promise,
-    until = webdriver.until;
+    until = webdriver.until,
+    fs = require('fs');
 
 var driver = new webdriver.Builder()
-    .forBrowser('chrome')
+    .forBrowser('phantomjs')
     .build();
+
+driver.manage().window().maximize();
 
 var username = 'YOUR_LOGIN_HERE';
 var password = 'YOUR_PASSWORD_HERE!';
