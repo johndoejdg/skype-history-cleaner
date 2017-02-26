@@ -5,8 +5,9 @@
   "main": "cleaner.js",
   "private": true,
   "dependencies": {
-    "selenium-webdriver": "*",
-    "q": "^1.4.1"
+    "gpg": "^0.6.0",
+    "q": "^1.4.1",
+    "selenium-webdriver": "*"
   },
   "devDependencies": {},
   "scripts": {
